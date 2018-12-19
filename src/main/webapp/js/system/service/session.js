@@ -38,6 +38,9 @@ moduleService.service('sessionService', ['$location', function ($location) {
                 isSessionActive = false;
                 userName = "";
                 idUserLogged = "";
+                tipoUsuarioID = "";
+                sesion = "";
+
 
             },
             setSesion: function (data) {

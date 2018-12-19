@@ -34,6 +34,7 @@ var autenticacionUsuario = function ($q, $location, $http, sessionService) {
             sessionService.setSessionActive();
             sessionService.setUserName(response.data.message.nombre + " " + response.data.message.ape1);
             sessionService.setId(response.data.message.id);
+            //sessionService.setSesion(response.data.message);
             sessionService.setTypeUserID(response.data.message.obj_tipoUsuario.id);
             deferred.resolve();
         } else {
@@ -49,7 +50,7 @@ var autenticacionUsuario = function ($q, $location, $http, sessionService) {
 
 wildcart.config(['$routeProvider', function ($routeProvider) {
 
-        //HOME
+        //HOOME
         $routeProvider.when('/', {templateUrl: 'js/app/common/home.html', controller: 'homeController'});
 
         //USUARIO

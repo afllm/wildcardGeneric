@@ -90,7 +90,7 @@ public class ServiceFactory {
                                 oReplyBean = oUsuarioService.fill();
                                 break;
 //                            case "login":
-//                                oReplyBean = oUsuarioService.login();  ??
+//                                oReplyBean = oUsuarioService.login();
 //                                break;
                             case "logout":
                                 oReplyBean = oUsuarioService.logout();
@@ -127,7 +127,7 @@ public class ServiceFactory {
                             case "getpagexusuario":
                                 oReplyBean = oFacturaService.getpageXusuario();
                                 break;
-                            case "getcountfacuse":
+                            case "getcountxusuario":
                                 oReplyBean = oFacturaService.getcountXusuario();
                                 break;
                             default:
@@ -234,7 +234,6 @@ public class ServiceFactory {
                 }
                 break;
             case 2:
-
                 switch (ob) {
                     case "tipousuario":
                         TipousuarioService_2 oTipousuarioService = new TipousuarioService_2(oRequest);
@@ -259,7 +258,7 @@ public class ServiceFactory {
                                 break;
 
 //                            case "login":
-//                                oReplyBean = oUsuarioService.login();  ??
+//                                oReplyBean = oUsuarioService.login();
 //                                break;
                             case "logout":
                                 oReplyBean = oUsuarioService.logout();
@@ -278,7 +277,6 @@ public class ServiceFactory {
                             case "get":
                                 oReplyBean = oFacturaService.get();
                                 break;
-
                             case "getcount":
                                 oReplyBean = oFacturaService.getcount();
                                 break;
@@ -327,7 +325,6 @@ public class ServiceFactory {
                             case "get":
                                 oReplyBean = oProductoService.get();
                                 break;
-
                             case "getcount":
                                 oReplyBean = oProductoService.getcount();
                                 break;
@@ -383,13 +380,13 @@ public class ServiceFactory {
                         oReplyBean = new ReplyBean(500, "Object doesn't exist");
                         break;
                 }
-                break;
-
+         break;
             case 0:
                 switch (ob) {
                     case "usuario":
                         UsuarioService_0 oUsuarioService = new UsuarioService_0(oRequest);
                         switch (op) {
+
                             case "login":
                                 oReplyBean = oUsuarioService.login();
                                 break;
@@ -401,14 +398,14 @@ public class ServiceFactory {
                                 break;
                         }
                         break;
+
                     default:
                         oReplyBean = new ReplyBean(500, "Object doesn't exist");
                         break;
                 }
                 break;
-
             default:
-                oReplyBean = new ReplyBean(500, "Profile doesn't exist");
+                oReplyBean = new ReplyBean(500, "Proefile doesn't exist");
                 break;
         }
         return oReplyBean;
