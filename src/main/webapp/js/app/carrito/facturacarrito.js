@@ -90,26 +90,26 @@ moduleFactura.controller('facturaCarritoController', ['$scope', '$http', '$locat
                 //CABECERA
                 doc.setDrawColor(119, 136, 153);
                 doc.rect(8, 10, 195, 70);
-                doc.rect(8, 10, 85, 70);
+                doc.rect(8, 10, 95, 70);
                 doc.addImage(imgData, 'JPEG', 155, 12, 42, 40);
                 doc.setFontSize(11);
                 doc.setFontType('bold');
-                doc.text(100, 20, 'Useful Tools');
-                doc.text(100, 40, '555-125-563');
-                doc.text(100, 50, 'info@usefultools.com');
-                doc.text(100, 30, 'CIF. D29892858');
+                doc.text(105, 20, 'Useful Tools');
+                doc.text(105, 40, '555-125-563');
+                doc.text(105, 50, 'info@usefultools.com');
+                doc.text(105, 30, 'CIF. D29892858');
                 doc.setFontType('normal');
-                doc.text(100, 62, 'Calle 11 Sector 2 PI Salper');
-                doc.text(100, 72, 'Ciudad Nueva');
+                doc.text(105, 62, 'Calle 11 Sector 2 PI Salper');
+                doc.text(105, 72, 'Ciudad Nueva');
 
                 doc.setFontSize(22);
                 doc.setFontType('bold');
-                doc.text(12, 23, 'Factura ' + $scope.id);
-                doc.setFontSize(13);
+                doc.text(11, 23, 'Factura ' + $scope.id);
+                doc.setFontSize(12);
                 doc.setFontType('normal');
-                doc.text(12, 40, 'Cliente: ' + usuario);
-                doc.text(12, 50, 'DNI: ' + dni);
-                doc.text(12, 60, 'Fecha: ' + fecha);
+                doc.text(11, 40, 'Cliente: ' + usuario);
+                doc.text(11, 50, 'DNI: ' + dni);
+                doc.text(11, 60, 'Fecha: ' + fecha);
 
 
                 doc.rect(8, 80, 195, 210);
@@ -132,27 +132,27 @@ moduleFactura.controller('facturaCarritoController', ['$scope', '$http', '$locat
                         doc.addPage('a4', 1);
                         //CABECERA
                         doc.rect(8, 10, 195, 70);
-                        doc.rect(8, 10, 85, 70);
+                        doc.rect(8, 10, 95, 70);
                         doc.addImage(imgData, 'JPEG', 155, 12, 42, 40);
                         doc.setFontSize(11);
                         doc.setFontType('bold');
-                        doc.text(100, 20, 'Useful Tools');
-                        doc.text(100, 40, 'Tel. 555-125-563');
-                        doc.text(100, 50, 'Email: info@usefultools.com');
-                        doc.text(100, 30, 'CIF. D29892858');
+                        doc.text(105, 20, 'Useful Tools');
+                        doc.text(105, 40, 'Tel. 555-125-563');
+                        doc.text(105, 50, 'Email: info@usefultools.com');
+                        doc.text(105, 30, 'CIF. D29892858');
                         doc.setFontType('normal');
-                        doc.text(100, 62, 'Direccion: Calle 11 Sector 2 PI Salper');
-                        doc.text(100, 72, 'Ciudad Nueva');
+                        doc.text(105, 62, 'Direccion: Calle 11 Sector 2 PI Salper');
+                        doc.text(105, 72, 'Ciudad Nueva');
 
 
                         doc.setFontSize(22);
                         doc.setFontType('bold');
-                        doc.text(12, 23, 'Factura ' + $scope.id);
-                        doc.setFontSize(13);
+                        doc.text(11, 23, 'Factura ' + $scope.id);
+                        doc.setFontSize(12);
                         doc.setFontType('normal');
-                        doc.text(12, 40, 'Cliente: ' + usuario);
-                        doc.text(12, 50, 'DNI: ');
-                        doc.text(12, 60, 'Fecha: ' + fecha);
+                        doc.text(11, 40, 'Cliente: ' + usuario);
+                        doc.text(11, 50, 'DNI: ');
+                        doc.text(11, 60, 'Fecha: ' + fecha);
 
                         doc.rect(8, 80, 195, 210);
                         doc.setFontSize(13);
