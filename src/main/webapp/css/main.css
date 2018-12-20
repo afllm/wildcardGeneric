@@ -15,7 +15,7 @@ body {
     /* Set the fixed height of the footer here */
     height: 30px;
     line-height: 30px; /* Vertically center the text there */
-    background-color: #f5f5f5;
+    
 }
 
 
@@ -82,7 +82,7 @@ th {
 
 .contenido {
     background-color: rgb(119, 136, 153);
-
+    color: whitesmoke;
     height: 200px;
     width: 250px;
     display: grid; 
