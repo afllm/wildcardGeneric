@@ -214,5 +214,39 @@ public class GenericDaoImplementation implements DaoInterface {
         return alBean;
 
     }
+    
+    @Override
+    public int getcountX(int idajena) throws Exception {
+        String strSQL="";
+        if ("factura".equals(ob)) {
+            strSQL = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=?";
+        } else if ("linea".equals(ob)) {
+            strSQL = "SELECT COUNT(id) from " + ob + " where id_factura=?";
+        } else {
+          throw new Exception("Error en Dao getcountX SQL de " + ob);
+        }
+
+        int res = 0;
+        ResultSet oResultSet = null;
+        PreparedStatement oPreparedStatement = null;
+        try {
+            oPreparedStatement = oConnection.prepareStatement(strSQL);
+            oPreparedStatement.setInt(1, idajena);
+            oResultSet = oPreparedStatement.executeQuery();
+            if (oResultSet.next()) {
+                res = oResultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new Exception("Error en Dao getcountX de " + ob, e);
+        } finally {
+            if (oResultSet != null) {
+                oResultSet.close();
+            }
+            if (oPreparedStatement != null) {
+                oPreparedStatement.close();
+            }
+        }
+        return res;
+}
 
 }
