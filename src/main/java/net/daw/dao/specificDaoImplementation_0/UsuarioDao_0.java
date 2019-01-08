@@ -38,10 +38,10 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
     }
 
-    @Override
-    public int getcount() throws Exception {
-        throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
-    }
+//    @Override
+//    public int getcount() throws Exception {
+//        throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
+//    }
 
     @Override
     public BeanInterface create(BeanInterface oBean) throws Exception {
