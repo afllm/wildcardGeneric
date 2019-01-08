@@ -29,29 +29,29 @@ public class LineaService_2 extends GenericServiceImplementation implements Serv
         //oUsuarioBeanSession = (UsuarioBean) oRequest.getSession().getAttribute("user");
 }
 
-   public ReplyBean getLineaFactura() throws Exception {
-        ReplyBean oReplyBean;
-        ConnectionInterface oConnectionPool = null;
-        Connection oConnection;
-        try {
-            Integer id_factura = Integer.parseInt(oRequest.getParameter("idfactura"));
-            Integer iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
-            Integer iPage = Integer.parseInt(oRequest.getParameter("page"));
-            oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
-            oConnection = oConnectionPool.newConnection();
-            LineaDao_2 oLineaDao = new LineaDao_2(oConnection, ob, oUsuarioBeanSession);
-            ArrayList<LineaBean> alLineaBean = oLineaDao.getLineaFactura(iRpp, iPage, id_factura, 2);
-            Gson oGson = new Gson();
-            oReplyBean = new ReplyBean(200, oGson.toJson(alLineaBean));
-        } catch (Exception ex) {
-            throw new Exception("ERROR: Service level: getLineaFactura method: " + ob + " object" + ex.getMessage(), ex);
-        } finally {
-            oConnectionPool.disposeConnection();
-        }
-
-        return oReplyBean;
-
-}
+//   public ReplyBean getLineaFactura() throws Exception {
+//        ReplyBean oReplyBean;
+//        ConnectionInterface oConnectionPool = null;
+//        Connection oConnection;
+//        try {
+//            Integer id_factura = Integer.parseInt(oRequest.getParameter("idfactura"));
+//            Integer iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
+//            Integer iPage = Integer.parseInt(oRequest.getParameter("page"));
+//            oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
+//            oConnection = oConnectionPool.newConnection();
+//            LineaDao_2 oLineaDao = new LineaDao_2(oConnection, ob, oUsuarioBeanSession);
+//            ArrayList<LineaBean> alLineaBean = oLineaDao.getLineaFactura(iRpp, iPage, id_factura, 2);
+//            Gson oGson = new Gson();
+//            oReplyBean = new ReplyBean(200, oGson.toJson(alLineaBean));
+//        } catch (Exception ex) {
+//            throw new Exception("ERROR: Service level: getLineaFactura method: " + ob + " object" + ex.getMessage(), ex);
+//        } finally {
+//            oConnectionPool.disposeConnection();
+//        }
+//
+//        return oReplyBean;
+//
+//}
 
  
 }

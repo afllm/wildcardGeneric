@@ -93,7 +93,7 @@ moduleLinea.controller('lineaplistxusuarioController', ['$scope', '$http', '$loc
 
         $http({
             method: 'GET',
-            url: 'json?ob=' + $scope.ob + '&op=getlineafactura&rpp=' + $scope.rpp + '&page=' + $scope.page + '&idfactura=' + $scope.id + $scope.orderURLServidor
+            url: 'json?ob=' + $scope.ob + '&op=getpagex&rpp=' + $scope.rpp + '&page=' + $scope.page + '&idajena=' + $scope.id + $scope.orderURLServidor
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuarios = response.data.message;

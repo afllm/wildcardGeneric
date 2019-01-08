@@ -28,4 +28,6 @@ public interface ServiceInterface {
 
     public ReplyBean getcountX() throws Exception;
     
+    public ReplyBean getpageX() throws Exception;
+    
 }
