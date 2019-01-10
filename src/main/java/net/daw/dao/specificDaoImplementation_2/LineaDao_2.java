@@ -82,6 +82,23 @@ public class LineaDao_2 extends GenericDaoImplementation implements DaoInterface
     public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception {
         throw new Exception("Error en Dao getpage de " + ob + ": No autorizado");
     }
+    
+    @Override
+    public int getcountX(int idajena) throws Exception {//hacer private, consultar desde el pojo y no poder preguntar desde fuera del servidor
+        //String strSQL = "";
+
+        strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_factura=" + idajena;
+
+        //se cambia la query y se llama al getcount normal para devolverlo
+        return super.getcount();
+    }
+    
+    @Override
+    public ArrayList<BeanInterface> getpageX(int iRpp, int iPage, int idajena, Integer expand) throws Exception {
+        strSQL_WhereGetpagex = " WHERE id_factura=?";
+        return super.getpageX(iRpp, iPage, idajena, expand);
+
+    }
 
 //    public ArrayList<LineaBean> getLineaFactura(int iRpp, int iPage, int idFactura, Integer expand) throws Exception {
 //        String strSQL = "SELECT * FROM " + ob;

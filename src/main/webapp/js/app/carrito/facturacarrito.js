@@ -24,7 +24,7 @@ moduleFactura.controller('facturaCarritoController', ['$scope', '$http', '$locat
 
         $http({
             method: 'GET',
-            url: 'json?ob=linea&op=getlineafactura&rpp=10&page=1&idfactura=' + $scope.id
+            url: 'json?ob=linea&op=getpagex&rpp=10&page=1&idajena=' + $scope.id
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuarios = response.data.message;
@@ -78,7 +78,7 @@ moduleFactura.controller('facturaCarritoController', ['$scope', '$http', '$locat
 
             $http({
                 method: 'GET',
-                url: 'json?ob=linea&op=getlineafactura&rpp=10000&page=1&idfactura=' + $scope.id
+                url: 'json?ob=linea&op=getpagex&rpp=10000&page=1&idajena=' + $scope.id
 
 
             }).then(function (response) {

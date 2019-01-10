@@ -54,6 +54,16 @@ public class FacturaDao_0  extends GenericDaoImplementation implements DaoInterf
 //    
 //    }
  
+ @Override
+    public int getcountX(int idajena) throws Exception {//hacer private, consultar desde el pojo y no poder preguntar desde fuera del servidor
+        //String strSQL = "";
+
+        strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + idajena;
+
+        //se cambia la query y se llama al getcount normal para devolverlo
+        return super.getcount();
+    }
+ 
  
  @Override
     public BeanInterface get(int id, Integer expand) throws Exception {

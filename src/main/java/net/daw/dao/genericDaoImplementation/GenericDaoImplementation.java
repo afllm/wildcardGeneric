@@ -35,6 +35,7 @@ public class GenericDaoImplementation implements DaoInterface {
     protected String strSQL_create;
     protected String strSQL_update;
     protected String strSQL_getpage;
+    protected String strSQL_WhereGetpagex;
 
     public GenericDaoImplementation(Connection oConnection, String ob, UsuarioBean oUsuarioBeanSession) {
         super();
@@ -53,6 +54,7 @@ public class GenericDaoImplementation implements DaoInterface {
         //strSQL_create = "INSERT INTO " + ob;
         //strSQL_update = "UPDATE " + ob + " SET ";
         strSQL_getpage = "SELECT * FROM " + ob;
+        strSQL_WhereGetpagex="";
     }
 
     @Override
@@ -217,13 +219,13 @@ public class GenericDaoImplementation implements DaoInterface {
     @Override
     public int getcountX(int idajena) throws Exception {//hacer private, consultar desde el pojo y no poder preguntar desde fuera del servidor
         //String strSQL = "";
-        if ("factura".equals(ob)) {
-            strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + idajena;
-        } else if ("linea".equals(ob)) {
-            strSQL_getcount = "SELECT COUNT(id) from " + ob + " where id_factura=" + idajena;
-        } else {
-            throw new Exception("Error en Dao getcountX SQL de " + ob);
-        }
+//        if ("factura".equals(ob)) {
+//            strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + idajena;
+//        } else if ("linea".equals(ob)) {
+//            strSQL_getcount = "SELECT COUNT(id) from " + ob + " where id_factura=" + idajena;
+//        } else {
+//            throw new Exception("Error en Dao getcountX SQL de " + ob);
+//        }
 
         //se cambia la query y se llama al getcount normal para devolverlo
         return this.getcount();
@@ -257,14 +259,14 @@ public class GenericDaoImplementation implements DaoInterface {
         String strSQL = "SELECT * FROM " + ob;
         ArrayList<BeanInterface> alOBean;
         if (iRpp > 0 && iRpp < 100000 && iPage > 0 && iPage < 100000000) {
-            if ("factura".equals(ob)) {
-                strSQL += " WHERE id_usuario=?";
-            } else if ("linea".equals(ob)) {
-                strSQL += " WHERE id_factura=?";
-            } else {
-                throw new Exception("Error en Dao getpageX SQL de " + ob);
-            }
-            //strSQL += " WHERE id_usuario=? ";
+//            if ("factura".equals(ob)) {
+//                strSQL += " WHERE id_usuario=?";
+//            } else if ("linea".equals(ob)) {
+//                strSQL += " WHERE id_factura=?";
+//            } else {
+//                throw new Exception("Error en Dao getpageX (if objeto) SQL de " + ob);
+//            }
+            strSQL += strSQL_WhereGetpagex;
             strSQL += " LIMIT " + (iPage - 1) * iRpp + ", " + iRpp;
             ResultSet oResultSet = null;
             PreparedStatement oPreparedStatement = null;
@@ -281,7 +283,7 @@ public class GenericDaoImplementation implements DaoInterface {
                     alOBean.add(oBean);
                 }
             } catch (SQLException e) {
-                throw new Exception("Error en Dao getpageX de " + ob +"-------"+e, e);
+                throw new Exception("Error en Dao getpageX (sql) de " + ob +" :"+e.getMessage(), e);
             } finally {
                 if (oResultSet != null) {
                     oResultSet.close();
@@ -291,7 +293,7 @@ public class GenericDaoImplementation implements DaoInterface {
                 }
             }
         } else {
-            throw new Exception("Error en Dao getpage de " + ob);
+            throw new Exception("Error en Dao getpageX (size) de " + ob);
         }
         return alOBean;
 

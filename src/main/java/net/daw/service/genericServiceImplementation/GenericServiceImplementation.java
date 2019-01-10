@@ -210,11 +210,11 @@ public class GenericServiceImplementation implements ServiceInterface {
             oConnection = oConnectionPool.newConnection();
             //FacturaDao_1 oFacturaDao = new FacturaDao_1(oConnection, ob, oUsuarioBeanSession);
             DaoInterface oDao = DaoFactory.getDao(oConnection, ob, oUsuarioBeanSession);
-            ArrayList<BeanInterface> alOBean = oDao.getpageX(iRpp, iPage, idajena, 1);
+            ArrayList<BeanInterface> alOBean = oDao.getpageX(iRpp, iPage, idajena, 2);
             Gson oGson = new Gson();
             oReplyBean = new ReplyBean(200, oGson.toJson(alOBean));
         } catch (Exception ex) {
-            throw new Exception("ERROR: Service level: getpageX method: " + ob + " object" + ex.getMessage(), ex);
+            throw new Exception("ERROR: Service level: getpageX method: " + ob + " object: " + ex.getMessage(), ex);
         } finally {
             oConnectionPool.disposeConnection();
         }
