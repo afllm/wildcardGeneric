@@ -122,7 +122,7 @@ moduleProducto.controller("productoNewController", [
                 headers: {'Content-Type': undefined},
                 method: 'POST',
                 data: oFormData,
-                url: `json?ob=producto&op=addimage`
+                url: `json?ob=producto&op=loadimage`
             })
             /*.then(function (response) {
              console.log(response);
