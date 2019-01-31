@@ -48,6 +48,30 @@ var autenticacionUsuario = function ($q, $location, $http, sessionService) {
 }
 
 
+var autenticacionCualquieraLogueado = function ($q, $location, $http, sessionService) {
+    var deferred = $q.defer();
+    $http({
+        method: 'GET',
+        url: 'json?ob=usuario&op=check'
+    }).then(function (response) {
+        if (response.data.message.obj_tipoUsuario.id === 2 || response.data.message.obj_tipoUsuario.id === 1) {
+            sessionService.setSesion(response.data.message);
+            sessionService.setSessionActive();
+            sessionService.setUserName(response.data.message.nombre + " " + response.data.message.ape1);
+            sessionService.setId(response.data.message.id);
+            //sessionService.setSesion(response.data.message);
+            sessionService.setTypeUserID(response.data.message.obj_tipoUsuario.id);
+            deferred.resolve();
+        } else {
+            $location.path('/home');
+        }
+    }, function (response) {
+        $location.path('/home');
+    });
+    return deferred.promise;
+
+}
+
 wildcart.config(['$routeProvider', function ($routeProvider) {
 
         //HOOME
@@ -55,7 +79,7 @@ wildcart.config(['$routeProvider', function ($routeProvider) {
 
         //USUARIO
         $routeProvider.when('/usuario/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/usuario/plist.html', controller: 'usuarioPlistController', resolve: {auth: autenticacionAdministrador}});
-        $routeProvider.when('/usuario/view/:id', {templateUrl: 'js/app/usuario/view.html', controller: 'usuarioViewController'});
+        $routeProvider.when('/usuario/view/:id', {templateUrl: 'js/app/usuario/view.html', controller: 'usuarioViewController', resolve: { auth: autenticacionCualquieraLogueado }});
         $routeProvider.when('/usuario/new', {templateUrl: 'js/app/usuario/new.html', controller: 'usuarioNewController', resolve: { auth: autenticacionAdministrador } });
         $routeProvider.when('/usuario/edit/:id', {templateUrl: 'js/app/usuario/edit.html', controller: 'usuarioEditController', resolve: { auth: autenticacionAdministrador } });
         $routeProvider.when('/usuario/remove/:id', {templateUrl: 'js/app/usuario/remove.html', controller: 'usuarioRemoveController', resolve: { auth: autenticacionAdministrador } });
